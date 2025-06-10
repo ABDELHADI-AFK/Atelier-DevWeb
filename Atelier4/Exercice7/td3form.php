@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="style.css">
+<head>
+    <title>Choix d’un loisir</title>
+</head>
+<body>
+
+<?php
+$loisirs = ['Lecture', 'Musique', 'Sports', 'Voyages', 'Cinéma', 'Jeux', 'Cuisine'];
+?>
+
+<form method="post" action="td3affiche.php">
+    <fieldset>
+        <legend>Vos loisirs</legend>
+        <?php
+        foreach ($loisirs as $loisir) {
+            echo '<label>';
+            echo '<input type="checkbox" name="loisirs[]" value="' . $loisir . '"> ' . $loisir . '';
+            echo '</label><br>';
+        }
+        ?>
+    </fieldset>
+    <input type="submit" value="Envoyer">
+</form>

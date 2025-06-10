@@ -1,0 +1,55 @@
+nombres.php
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+    <title>Exercice 2</title>
+</head>
+<body>
+    <h2>Entrez les nombres</h2>
+    <form action="resultat.php" method="get">
+        <input type="number" name="val1"> est-il compris entre
+        <input type="number" name="val2"> et
+        <input type="number" name="val3">
+        <br><br>
+        <input type="submit" value="Réponse">
+    </form>
+</body>
+</html>
+
+
+resultat.php
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultats du test</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Résultats du test</h2>
+    <?php
+    if (isset($_GET['val1'], $_GET['val2'], $_GET['val3'])) {
+        $val1 = $_GET['val1'];
+        $val2 = $_GET['val2'];
+        $val3 = $_GET['val3'];
+
+        $min = min($val2, $val3);
+        $max = max($val2, $val3);
+
+        echo "$val1 est-il compris entre $min et $max ?";
+
+        if ($val1 >= $min && $val1 <= $max) {
+            echo "$val1 est compris entre $min et $max";
+        } else {
+            echo "$val1 n'est pas compris entre $min et $max";
+        }
+    } else {
+        echo "Veuillez remplir tous les champs.";
+    }
+    ?>
+</body>
+</html>

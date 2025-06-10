@@ -1,0 +1,55 @@
+td3form.php
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="style.css">
+<head>
+    <title>Choix d’un loisir</title>
+</head>
+<body>
+
+<?php
+
+$loisirs = array("Sports", "Musique", "Jeux", "Voyages");
+?>
+
+<form action="td3affiche.php" method="post">
+    <fieldset>
+        <legend>Loisir favori</legend>
+        <?php
+        foreach ($loisirs as $loisir) {
+            echo '<label>';
+            echo '<input type="radio" name="loisir" value="'. $loisir .'";>' . $loisir;
+            echo '</label><br>';
+        }
+        ?>
+    </fieldset>
+    <br>
+    <input type="submit" value="Envoyer">
+</form>
+
+</body>
+</html>
+
+
+td3affiche.php
+
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="style.css">
+<head>
+    <title>Loisir sélectionné</title>
+</head>
+<body>
+
+<?php
+if (isset($_POST['loisir'])) {
+    $loisirChoisi = htmlspecialchars($_POST['loisir']);
+    echo "Votre loisir favori est : $loisirChoisi";
+} else {
+    echo "Aucun loisir sélectionné.";
+}
+?>
+
+</body>
+</html>

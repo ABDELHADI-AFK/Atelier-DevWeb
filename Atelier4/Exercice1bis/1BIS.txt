@@ -1,0 +1,98 @@
+formulaire2.php
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Formulaire 2</title>
+</head>
+<body>
+	<form action="liens.php" method="get">
+        <label>Prénom :</label>
+	    <input type="text" name="prenom">
+	    <br><br>
+	    <label>Nom :</label>
+	    <input type="text" name="nom">
+	    <br><br>
+	    <label>Adresse :</label>
+	    <input type="text" name="adresse">
+	    <br><br>
+        <label>Ville :</label>
+	    <input type="text" name="ville">
+	    <br><br>
+	    <label>Code Postal :</label>
+	    <input type="number" name="postal">
+	    <br><br>
+	    <input type="submit" value="Envoyer"></input>
+		<input type="reset" value="Réinitialiser"></input>
+	</form>
+</body>
+</html>
+
+
+liens.php
+
+<?php
+if(isset($_GET['nom']) && $_GET['nom']!=="" && isset($_GET['prenom']) && $_GET['prenom']!=="" && isset($_GET['adresse']) && $_GET['adresse']!=="" && isset($_GET['ville']) && $_GET['ville']!=="" && isset($_GET['postal']) && $_GET['postal']!=="") {
+    $nom = $_GET['nom'];
+    $prenom = $_GET['prenom'];
+    $adresse = $_GET['adresse'];
+    $ville = $_GET['ville'];
+    $postal = $_GET['postal'];
+    echo "<h2>Consultation de :</h2>
+    <ul>
+        <li><a href='etat_civil.php?prenom=$prenom&nom=$nom'>Votre état civil</a></li>
+        <li><a href='fichier_adresse.php?adresse=$adresse&ville=$ville&postal=$postal'>Votre Adresse</a></li>
+    </ul>";
+} else {
+    echo "Veuillez remplir tous les champs.";
+}
+?>
+
+
+etat_civil.php
+
+<?php
+if(isset($_GET['nom']) && $_GET['nom']!=="" && isset($_GET['prenom']) && $_GET['prenom']!=="" && isset($_GET['adresse']) && $_GET['adresse']!=="" && isset($_GET['ville']) && $_GET['ville']!=="" && isset($_GET['postal']) && $_GET['postal']!=="") {
+    $nom = $_GET['nom'];
+    $prenom = $_GET['prenom'];
+    $adresse = $_GET['adresse'];
+    $ville = $_GET['ville'];
+    $postal = $_GET['postal'];
+    echo "<h2>Consultation de :</h2>
+    <ul>
+        <li><a href='etat_civil.php?prenom=$prenom&nom=$nom'>Votre état civil</a></li>
+        <li><a href='fichier_adresse.php?adresse=$adresse&ville=$ville&postal=$postal'>Votre Adresse</a></li>
+    </ul>";
+} else {
+    echo "Veuillez remplir tous les champs.";
+}
+?>
+
+
+fichier_adresse.php
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>État Civil</title>
+</head>
+<body>
+<?php
+
+if(isset($_GET['adresse']) && $_GET['adresse']!=="" && isset($_GET['ville']) && $_GET['ville']!=="" && isset($_GET['postal']) && $_GET['postal']!=="") {
+    $adresse = $_GET['adresse'];
+    $ville = $_GET['ville'];
+    $postal = $_GET['postal'];
+    echo "Vous habitez: <br> $adresse <br> $postal ($ville).";
+} else {
+    echo "Veuillez remplir tous les champs.";
+}
+?>
+</body>
+</html>
